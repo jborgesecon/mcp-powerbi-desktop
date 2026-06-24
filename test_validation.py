@@ -98,7 +98,8 @@ def main():
             "update_measure",
             "create_measure",
             "create_or_update_measure",
-            "run_tmsl"
+            "run_tmsl",
+            "get_relationships"
         ]
         
         print("\n=== Tool Discovery Summary ===")

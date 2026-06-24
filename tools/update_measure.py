@@ -3,13 +3,17 @@ from powerbi.model_writer import ModelWriter
 
 SCHEMA = types.Tool(
     name="update_measure",
-    description="Updates an existing measure's DAX formula.",
+    description="Updates an existing measure's DAX formula. Supports automatic instance binding if only one Power BI Desktop instance is running. Accepts an optional 'port' argument to query a specific instance directly. If multiple instances are running and no port is provided, a prior call to select_instance(port) or providing the 'port' argument is required.",
     inputSchema={
         "type": "object",
         "properties": {
             "table": {"type": "string", "description": "Target table"},
             "name": {"type": "string", "description": "Measure name"},
-            "dax": {"type": "string", "description": "New DAX formula"}
+            "dax": {"type": "string", "description": "New DAX formula"},
+            "port": {
+                "type": "integer",
+                "description": "Optional port of a specific running Power BI Desktop instance to query."
+            }
         },
         "required": ["table", "name", "dax"]
     }
